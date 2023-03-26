@@ -5,6 +5,7 @@ language = "python3"
 # A list of globs that specify which files and directories should
 # be hidden in the workspace.
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
+entrypoint = "app.py"
 
 # Specifies which nix channel to use when building the environment.
 [nix]
@@ -87,3 +88,11 @@ pattern = "**/*.py"
 
 [languages.python3.languageServer]
 start = "pylsp"
+
+[interpreter]
+
+[interpreter.command]
+args = ["stderred", "--", "prybar-python310", "-q", "--ps1", "\u0001\u001B[33m\u0002\u0001\u001B[00m\u0002 ", "-i"]
+
+[interpreter.command.env]
+LD_LIBRARY_PATH = "$PYTHON_LD_LIBRARY_PATH"
